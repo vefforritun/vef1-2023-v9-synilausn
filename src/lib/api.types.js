@@ -20,14 +20,14 @@
  * @property {string} id Auðkenni geimskots.
  * @property {string} name Nafn geimskots.
  * @property {LaunchStatus} status Staða geimskots (nafn).
- * @property {string} mission Nafn geimferðar.
+ * @property {string | undefined} mission Nafn geimferðar.
  */
 
 /**
  * @typedef {object} LaunchDetail
  * @property {string} name Nafn geimskots.
  * @property {LaunchStatus} status Staða geimskots.
- * @property {LaunchMission} mission Geimferð.
+ * @property {LaunchMission | null} mission Geimferð.
  * @property {string} window_start „Gluggi“ geimskots hefst, ISO 8601 form.
  * @property {string} window_end „Gluggi“ geimskots hefst, ISO 8601 form.
  * @property {string} image Hlekkur á mynd af geimskoti.

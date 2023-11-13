@@ -97,7 +97,7 @@ function createSearchResults(results, query) {
           { class: `status ${result.status.abbrev}` },
           result.status.name,
         ),
-        el('span', { class: 'mission' }, result.mission),
+        el('span', { class: 'mission' }, result.mission ?? '*Ekkert heiti*'),
       );
       list.appendChild(item);
     }
@@ -190,6 +190,15 @@ export async function renderDetails(parentElement, id) {
     return;
   }
 
+  const missionElement = result.mission
+    ? el(
+        'div',
+        { class: 'mission' },
+        el('h2', {}, `Geimferð: ${result.mission?.name ?? '*Engin lýsing*'}`),
+        el('p', {}, result.mission?.description ?? '*Engin lýsing*'),
+      )
+    : el('p', {}, 'Engar upplýsingar um geimferð.');
+
   const launchElement = el(
     'article',
     { class: 'launch' },
@@ -209,12 +218,7 @@ export async function renderDetails(parentElement, id) {
         el('h2', {}, `Staða: ${result.status.name}`),
         el('p', {}, result.status.description),
       ),
-      el(
-        'div',
-        { class: 'mission' },
-        el('h2', {}, `Geimferð: ${result.mission.name}`),
-        el('p', {}, result.mission.description),
-      ),
+      missionElement,
     ),
     el('div', { class: 'image' }, el('img', { src: result.image, alt: '' })),
     backElement,

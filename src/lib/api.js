@@ -35,7 +35,7 @@ export async function searchLaunches(query) {
   url.searchParams.set('mode', 'list');
   url.searchParams.set('search', query);
 
-  await sleep(1000);
+  // await sleep(1000);
 
   let response;
   try {
@@ -97,7 +97,7 @@ export async function getLaunch(id) {
   try {
     data = await response.json();
   } catch (e) {
-    console.error('Villa við að lesa gögn', e);
+    console.error('Villa við að lesa gögn um geimskot', e);
     return null;
   }
 
